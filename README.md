@@ -1,161 +1,120 @@
-🎓 Student Placement Prediction System
+# 🎓 Student Placement Prediction System
 
-A Machine Learning web application that predicts whether a student will be placed based on academic performance, work experience, and employability metrics. This project uses the Kaggle Campus Recruitment Dataset and an optimized XGBoost model with hyperparameter tuning and feature engineering.
+![Python](https://img.shields.io/badge/python-3.8%2B-blue) ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-📌 Project Overview
+> A Streamlit‑based machine learning application that predicts whether a student will be placed in campus recruitment, using academic, work experience and employability indicators.
 
-This system analyzes student academic and employability data to predict placement status using a trained machine learning model. The model is deployed through an interactive Streamlit web application.
 
-🚀 Features
+## 📌 What the project does
 
-Machine Learning prediction using XGBoost
+The repository contains code to train an XGBoost classifier on the [Kaggle Campus Recruitment Dataset](https://www.kaggle.com/datasets/), perform feature engineering, and serve the resulting model via an interactive web app. Users can input student details and receive a placement verdict along with confidence scores.
 
-89.30% accuracy achieved using GridSearchCV
 
-Feature engineering and feature selection
+## 🚀 Why it's useful
 
-Interactive web interface using Streamlit
+- **Predictive insights** for educators and students about placement likelihood
+- Demonstrates end‑to‑end ML workflow (data processing → training → deployment)
+- Lightweight and self‑contained; no external services required
+- A handy portfolio project for machine learning practitioners
 
-Real-time placement prediction
 
-Clean and professional dashboard
+## 📂 Project structure
 
-🧠 Machine Learning Details
-
-Algorithm used:
-
-XGBoost Classifier
-
-Techniques applied:
-
-Label Encoding
-
-Feature Engineering
-
-Feature Selection
-
-GridSearchCV Hyperparameter Tuning
-
-Stratified Cross Validation
-
-Accuracy achieved:
-89.30%
-
-📂 Project Structure
+```
 placement_prediction/
 │
-├── data/
+├── data/                    # raw dataset (CSV)
 │   └── placement.csv
 │
-├── model/
+├── model/                   # serialized artifacts
 │   ├── placement_model.pkl
 │   └── label_encoders.pkl
 │
-├── app.py
-├── train_model.py
-├── README.md
+├── app.py                   # Streamlit application
+├── train_model.py           # training & hyperparameter tuning script
+├── README.md                # this file
+└── .github/ ...             # ancillary project metadata
+```
 
-⚙️ Installation
 
-Install required libraries:
+## 🛠 Getting started
 
+### Prerequisites
+
+- Python 3.8 or higher
+- `pip` for installing dependencies
+
+### Installation
+
+Clone the repository and install required packages:
+
+```bash
+git clone <repo-url> placement_prediction
+cd placement_prediction
 pip install pandas numpy scikit-learn xgboost streamlit joblib
+```
 
-▶️ How to Run the Project
+(The model in `model/` is already trained; re‑training is optional.)
 
-Step 1: Train the model (optional, already trained model is included)
+### Running the app
 
-python train_model.py
+1. **(Optional)** Train or retrain the model:
+   ```bash
+   python train_model.py
+   ```
+   This will read `data/placement.csv`, perform encoding & feature engineering, run a `GridSearchCV` for hyperparameter tuning, and save the best model and encoders under `model/`.
+
+2. **Start the Streamlit interface**:
+   ```bash
+   python -m streamlit run app.py
+   ```
+
+3. Open your browser at [http://localhost:8501](http://localhost:8501).
 
 
-Step 2: Run the Streamlit web application
+## ⚙️ Usage example
 
-python -m streamlit run app.py
+Once the app is running, use the sidebar to supply the following inputs:
+
+- Gender, SSC/HSC/Degree/MBA percentages
+- Work experience (Yes/No)
+- Employability test score
+- MBA specialisation
+
+Click **Predict Placement** to view the result and probability.
 
 
-Step 3: Open browser and go to:
+## 📊 Data & features
 
-http://localhost:8501
+The model uses the following predictors:
 
-📊 Input Features Used
+- `gender`, `ssc_p`, `hsc_p`, `degree_p`, `mba_p`
+- `workex`, `etest_p`, `specialisation`
+- Engineered features: `academic_avg`, `employability_score`
 
-Gender
+Target variable: `status` (placed/not placed).
 
-SSC Percentage
 
-HSC Percentage
+## 📚 Help & documentation
 
-Degree Percentage
+For detailed setup and contribution guidelines, refer to the project’s [CONTRIBUTING.md](docs/CONTRIBUTING.md) (when available). Questions or issues can be opened via GitHub Issues.
 
-MBA Percentage
 
-Work Experience
+## 🤝 Contributing
 
-Employability Test Percentage
+Contributions are welcome! Please fork the repo and submit a pull request. See `docs/CONTRIBUTING.md` for the full guidelines.
 
-MBA Specialisation
 
-Academic Average (engineered feature)
+## 🧑‍💼 Maintainers
 
-Employability Score (engineered feature)
+- **Jiphin George** – original author and current maintainer
 
-🖥️ Technologies Used
 
-Python
+## 📄 License
 
-Pandas
+This project is available under the [MIT License](LICENSE).
 
-NumPy
 
-Scikit-learn
+---
 
-XGBoost
-
-Streamlit
-
-Joblib
-
-📈 Dataset
-
-Dataset used:
-Kaggle Campus Recruitment Dataset
-
-Contains student academic and placement records.
-
-🎯 Use Cases
-
-Predict student placement chances
-
-Academic performance analysis
-
-Educational analytics projects
-
-Machine Learning portfolio project
-
-👨‍💻 Author
-
-Jiphin George
-MCA Student
-Machine Learning Enthusiast
-
-📌 Future Improvements
-
-Deploy application online
-
-Add database integration
-
-Improve UI design
-
-Add visualization dashboard
-
-⭐ How to Use
-
-Enter student details in sidebar
-
-Click Predict Placement
-
-View placement prediction and probability
-
-✅ Status
-
-Project completed and ready for deployment.
+*Last updated:* February 19, 2026
